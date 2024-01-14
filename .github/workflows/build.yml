@@ -1,0 +1,22 @@
+name: build
+
+on: 
+  workflow_dispatch:
+    inputs:
+      xcodeversion:
+        description: 'Xcode Version on GH runners (Xcode_14.2)'
+        required: true
+
+
+jobs:
+  build:
+    runs-on: macos-13
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Switch to Xcode ${{ github.event.inputs.xcodeversion }}
+      run: sudo xcode-select --switch /Applications/${{ github.event.inputs.xcodeversion }}.app
+
+    - name: build
+      run: ./create_xcframework.sh
