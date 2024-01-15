@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 @_implementationOnly import Inject
 
+typealias InjectKit = Inject
+
 
 class ViewController: UIViewController {
     
@@ -17,7 +19,7 @@ class ViewController: UIViewController {
     }
     
     func presentChildVC() {
-        let childVC = Inject.ViewControllerHost(ChildViewController())
+        let childVC = InjectKit.ViewControllerHost(ChildViewController())
         present(childVC, animated: false)
     }
     
